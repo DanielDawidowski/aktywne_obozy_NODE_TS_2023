@@ -57,6 +57,7 @@ export class Password {
       ipaddress: publicIP.address(),
       date: moment().format("DD//MM//YYYY HH:mm")
     };
+
     const template: string = resetPasswordTemplate.passwordResetConfirmationTemplate(templateParams);
     const subject = "Potwierdzenie zmiany hasła";
     await mailTransport.sendEmail(existingUser.email!, subject, template);

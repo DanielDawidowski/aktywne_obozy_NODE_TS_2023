@@ -15,7 +15,8 @@ export class CurrentUser {
       token = req.session?.jwt;
       user = existingUser;
     }
-    console.log("existingUser", existingUser);
+
+    // console.log("existingUser", existingUser);
     res.status(HTTP_STATUS.OK).json({ token, isUser, user });
   }
 }

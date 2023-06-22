@@ -8,9 +8,9 @@ Accept: application/json
 withCredentials: true
 
   {
-    "username": "dadada",
+    "username": "dawid",
     "password": "qwerty",
-    "email": "dad@wp.pl"
+    "email": "dvds1987@gmail.com"
   }
 
 
@@ -21,7 +21,7 @@ Accept: application/json
 withCredentials: true
 
   {
-    "username": "dadada",
+    "username": "dawid",
     "password": "qwerty"
   }
 
