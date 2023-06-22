@@ -1,10 +1,14 @@
+import { authRoutes } from "@auth/routes/auth.route";
+import { currentUserRoutes } from "@auth/routes/current.route";
 import { Application } from "express";
 
-// const BASE_PATH = "/api/v1";
+const BASE_PATH = "/api/v1";
 
 export default (app: Application) => {
   const routes = () => {
-    console.log("app", app);
+    app.use(BASE_PATH, authRoutes.routes());
+    app.use(BASE_PATH, authRoutes.signoutRoute());
+    app.use(BASE_PATH, currentUserRoutes.routes());
   };
   routes();
 };

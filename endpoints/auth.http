@@ -1,0 +1,67 @@
+@baseUrl = http://localhost:5000
+@urlPath = api/v1
+
+###
+POST {{baseUrl}}/{{urlPath}}/signup
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+  {
+    "username": "dadada",
+    "password": "qwerty",
+    "email": "dad@wp.pl"
+  }
+
+
+###
+POST {{baseUrl}}/{{urlPath}}/signin
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+  {
+    "username": "dadada",
+    "password": "qwerty"
+  }
+
+###
+GET {{baseUrl}}/{{urlPath}}/signout
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+GET {{baseUrl}}/{{urlPath}}/currentuser
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+POST {{baseUrl}}/{{urlPath}}/forgot-password
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+  {
+    "email": "dvds1987@gmail.com"
+  }
+
+###
+POST {{baseUrl}}/{{urlPath}}/reset-password/cb227321f599154e72ddeab945be0b23c3a2b46d
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+  {
+    "password": "qwerty",
+    "confirmPassword": "qwerty"
+  }
+
+
+###
+DELETE {{baseUrl}}/{{urlPath}}/auth/646233e7117042ac994042e8
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
