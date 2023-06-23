@@ -8,9 +8,9 @@ Accept: application/json
 withCredentials: true
 
 {
-  "eventId": "645b9bd98012208825af79d1",
+  "eventId": "64946cbd6d76d9cbbd0af87e",
   "eventName": "Zakopane 2023",
-  "name": "Gucio Hujek",
+  "name": "Gucio Hujecki",
   "email": "skur@wp.pl",
   "tel": "602456456",
   "birthDate": "2023-06-06",
@@ -24,29 +24,30 @@ Accept: application/json
 withCredentials: true
 
 ###
-GET {{baseUrl}}/{{urlPath}}/client/645b5df45ed91e90d87ff654
+GET {{baseUrl}}/{{urlPath}}/client/64955924893a2455d4e39ee8
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
 
 
 ###
-DELETE {{baseUrl}}/{{urlPath}}/client/645b6433ac507426ed043c67
+DELETE {{baseUrl}}/{{urlPath}}/client/6495543ec38a2df6ec470f4c
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
 
 ###
-PUT {{baseUrl}}/{{urlPath}}/client/644a89226c2fe612ad84fb6f
+PUT {{baseUrl}}/{{urlPath}}/client/6495543ec38a2df6ec470f4c
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
 
 {
-  "eventId": "644a31b3517acfbaeb29deac",
+  "eventId": "64946cbd6d76d9cbbd0af87e",
+  "eventName": "Zakopane 2023",
   "name": "Gucio Duppa",
   "email": "skur@wp.pl",
   "tel": "602456456",
   "birthDate": "2023-06-06",
-  "price": 1000
+  "price": "1000"
 }

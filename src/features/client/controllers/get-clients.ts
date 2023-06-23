@@ -11,9 +11,9 @@ export class Get {
     const skip: number = (parseInt(page) - 1) * PAGE_SIZE;
     const limit: number = PAGE_SIZE * parseInt(page);
 
-    await clientService.getClients({}, skip, limit, { createdAt: -1 });
+    const clients = await clientService.getClients({}, skip, limit, { createdAt: -1 });
     await clientService.clientsCount();
-    res.status(HTTP_STATUS.OK).json({ message: "All clients" });
+    res.status(HTTP_STATUS.OK).json({ message: "All clients", clients });
   }
 
   public async client(req: Request, res: Response): Promise<void> {

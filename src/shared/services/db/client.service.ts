@@ -19,7 +19,7 @@ class ClientService {
   }
 
   public async getClientById(clientId: string): Promise<IClientDocument> {
-    const client: IClientDocument = (await ClientModel.findOne({ clientId }).populate("eventId")) as IClientDocument;
+    const client: IClientDocument = (await ClientModel.findOne({ clientId })) as IClientDocument;
     return client;
   }
 
