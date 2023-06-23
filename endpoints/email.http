@@ -1,0 +1,14 @@
+@baseUrl = http://localhost:5000
+@urlPath = api/v1
+
+###
+POST {{baseUrl}}/{{urlPath}}/contact
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "username": "gucio hujek",
+  "email": "dvds@wp.pl",
+  "message": "siema mordo"
+}
