@@ -1,0 +1,52 @@
+@baseUrl = http://localhost:5000
+@urlPath = api/v1
+
+###
+POST {{baseUrl}}/{{urlPath}}/client
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "eventId": "645b9bd98012208825af79d1",
+  "eventName": "Zakopane 2023",
+  "name": "Gucio Hujek",
+  "email": "skur@wp.pl",
+  "tel": "602456456",
+  "birthDate": "2023-06-06",
+  "price": "1000"
+}
+
+###
+GET {{baseUrl}}/{{urlPath}}/client/all/1
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+GET {{baseUrl}}/{{urlPath}}/client/645b5df45ed91e90d87ff654
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+
+###
+DELETE {{baseUrl}}/{{urlPath}}/client/645b6433ac507426ed043c67
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+PUT {{baseUrl}}/{{urlPath}}/client/644a89226c2fe612ad84fb6f
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "eventId": "644a31b3517acfbaeb29deac",
+  "name": "Gucio Duppa",
+  "email": "skur@wp.pl",
+  "tel": "602456456",
+  "birthDate": "2023-06-06",
+  "price": 1000
+}
