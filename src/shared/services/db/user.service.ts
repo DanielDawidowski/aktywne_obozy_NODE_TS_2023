@@ -18,8 +18,8 @@ class UserService {
   //   return users[0];
   // }
 
-  public async getUserById(authId: string): Promise<IUserDocument> {
-    const user: IUserDocument = (await UserModel.findOne({ authId })) as IUserDocument;
+  public async getUserById(id: string): Promise<IUserDocument> {
+    const user: IUserDocument = (await UserModel.findOne({ authId: id })) as IUserDocument;
     return user;
   }
 

@@ -12,6 +12,8 @@ import { Server } from "socket.io";
 import { config } from "@root/config";
 import applicationRoutes from "@root/routes";
 import { CustomError, IErrorResponse } from "@global/helpers/error-handler";
+import { SocketIOUserHandler } from "@socket/user";
+import { SocketIOChatHandler } from "@socket/chat";
 
 const SERVER_PORT = 5000;
 
@@ -105,6 +107,10 @@ export class AOServer {
   }
 
   private socketIOConnections(io: Server): void {
-    log.info("SocketIO connections");
+    const userSocketHandler: SocketIOUserHandler = new SocketIOUserHandler(io);
+    const chatSocketHandler: SocketIOChatHandler = new SocketIOChatHandler(io);
+
+    userSocketHandler.listen();
+    chatSocketHandler.listen();
   }
 }

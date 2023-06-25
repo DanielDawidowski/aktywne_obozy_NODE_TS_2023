@@ -29,7 +29,7 @@ class EventService {
   }
 
   public async getEventById(eventId: string): Promise<IEventDocument> {
-    const event: IEventDocument = (await EventModel.findOne({ eventId })) as IEventDocument;
+    const event: IEventDocument = (await EventModel.findById(eventId)) as IEventDocument;
     return event;
   }
 
