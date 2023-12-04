@@ -26,17 +26,23 @@ class AuthService {
   }
 
   public async getAuthUserByUsername(username: string): Promise<IAuthDocument> {
-    const user: IAuthDocument = (await AuthModel.findOne({ username: Helpers.firstLetterUppercase(username) }).exec()) as IAuthDocument;
+    const user: IAuthDocument = (await AuthModel.findOne({
+      username: Helpers.firstLetterUppercase(username)
+    }).exec()) as IAuthDocument;
     return user;
   }
 
   public async getAuthUserByEmail(email: string): Promise<IAuthDocument> {
-    const user: IAuthDocument = (await AuthModel.findOne({ email: Helpers.lowerCase(email) }).exec()) as IAuthDocument;
+    const user: IAuthDocument = (await AuthModel.findOne({
+      email: Helpers.lowerCase(email)
+    }).exec()) as IAuthDocument;
     return user;
   }
 
   public async deleteAuthUser(authId: string): Promise<IAuthDocument> {
-    const authUser: IAuthDocument = (await AuthModel.deleteOne({ _id: authId }).exec()) as unknown as IAuthDocument;
+    const authUser: IAuthDocument = (await AuthModel.deleteOne({
+      _id: authId
+    }).exec()) as unknown as IAuthDocument;
     return authUser;
   }
 

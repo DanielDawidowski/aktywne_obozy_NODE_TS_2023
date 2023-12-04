@@ -10,7 +10,7 @@ export class Get {
 
     list = await chatService.getUserConversationList(new mongoose.Types.ObjectId(req.currentUser!.userId));
 
-    res.status(HTTP_STATUS.OK).json({ message: "User conversation list", list });
+    res.status(HTTP_STATUS.OK).json({ message: "User conversation list", list: list });
   }
 
   public async messages(req: Request, res: Response): Promise<void> {

@@ -1,10 +1,17 @@
-import { ILogin } from "@user/interfaces/user.interface";
 import { Server, Socket } from "socket.io";
+import Logger from "bunyan";
+import { config } from "@root/config";
+
+const log: Logger = config.createLogger("chat");
 
 export let socketIOUserObject: Server;
 export const connectedUsersMap: Map<string, string> = new Map();
 
-let users: string[] = [];
+export interface ISocketLogin {
+  userId: string;
+}
+
+export let users: string[] = [];
 
 export class SocketIOUserHandler {
   private io: Server;
@@ -16,7 +23,8 @@ export class SocketIOUserHandler {
 
   public listen(): void {
     this.io.on("connection", (socket: Socket) => {
-      socket.on("setup", (data: ILogin) => {
+      log.info(` ----- Socket: ${socket.id}`);
+      socket.on("setup", (data: ISocketLogin) => {
         this.addClientToMap(data.userId, socket.id);
         this.addUser(data.userId);
         this.io.emit("user online", users);

@@ -20,6 +20,24 @@ export class AuthMiddleware {
     next();
   }
 
+  public verifyAdmin(req: Request, _res: Response, next: NextFunction): void {
+    if (!req.session?.jwt) {
+      throw new NotAuthError("Token is not available. Please login again.");
+    }
+
+    try {
+      const payload: AuthPayload = JWT.verify(req.session?.jwt, config.JWT_TOKEN!) as AuthPayload;
+      if (payload.role !== "admin") {
+        throw new NotAuthError("You are not authorized to access this route.");
+      }
+      req.currentUser = payload;
+    } catch (error) {
+      throw new NotAuthError("Token is invalid. Please login again.");
+    }
+
+    next();
+  }
+
   public checkAuthentication(req: Request, _res: Response, next: NextFunction): void {
     if (!req.currentUser) {
       throw new NotAuthError("Authentication is required to access this route.");

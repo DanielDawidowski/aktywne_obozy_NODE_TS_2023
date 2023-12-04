@@ -6,33 +6,21 @@ export interface IMessageDocument extends Document {
   conversationId: mongoose.Types.ObjectId;
   senderId: mongoose.Types.ObjectId;
   receiverId: mongoose.Types.ObjectId;
-  senderUsername: string;
-  senderAvatarColor: string;
-  senderProfilePicture: string;
-  receiverUsername: string;
-  receiverAvatarColor: string;
-  receiverProfilePicture: string;
+  senderName: string;
+  receiverName: string;
   body: string;
-  gifUrl: string;
-  isRead: boolean;
-  selectedImage: string;
   createdAt: Date;
-  deleteForMe: boolean;
-  deleteForEveryone: boolean;
 }
 
 export interface IMessageData {
   _id: string | mongoose.Types.ObjectId;
   conversationId: mongoose.Types.ObjectId;
   receiverId: string;
-  receiverUsername: string;
-  senderUsername: string;
+  receiverName: string;
+  senderName: string;
   senderId: string;
   body: string;
-  isRead: boolean;
   createdAt: Date | string;
-  deleteForMe: boolean;
-  deleteForEveryone: boolean;
 }
 
 export interface IMessageNotification {
@@ -78,4 +66,10 @@ export interface IGetMessageFromCache {
   index: number;
   message: string;
   receiver: IChatList;
+}
+
+export interface IChatUser {
+  _id: string;
+  username: string;
+  email: string;
 }

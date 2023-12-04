@@ -10,15 +10,15 @@ import { mailTransport } from "@service/emails/mail.transport";
 export class Create {
   @joiValidation(emailSchema)
   public async contact(req: Request, res: Response): Promise<void> {
-    const { username, email, message } = req.body;
+    const { senderName, email, message } = req.body;
     const templateParams: IContactTemplate = {
-      username,
+      senderName,
       email,
       message
     } as IContactTemplate;
 
     const template: string = contactAdminTemplate.sendMessageToAdmin(templateParams);
-    const subject = `Nowa wiadomość od ${username}`;
+    const subject = `Nowa wiadomość od ${senderName}`;
     await mailTransport.sendEmail(config.SENDER_EMAIL!, subject, template);
 
     res.status(HTTP_STATUS.OK).json({ message: "Wiadomość wysłana" });

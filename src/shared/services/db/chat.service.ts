@@ -4,9 +4,17 @@ import { ConversationModel } from "@chat/models/conversation.schema";
 import { MessageModel } from "@chat/models/chat.schema";
 import { ObjectId } from "mongodb";
 
+import { config } from "@root/config";
+import Logger from "bunyan";
+import { IUserDocument } from "@user/interfaces/user.interface";
+import { UserModel } from "@user/models/user.model";
+const log: Logger = config.createLogger("chat");
+
 class ChatService {
   public async addMessageToDB(data: IMessageData): Promise<void> {
-    const conversation: IConversationDocument[] = await ConversationModel.find({ _id: data?.conversationId }).exec();
+    const conversation: IConversationDocument[] = await ConversationModel.find({
+      _id: data?.conversationId
+    }).exec();
     if (conversation.length === 0) {
       await ConversationModel.create({
         _id: data?.conversationId,
@@ -19,11 +27,10 @@ class ChatService {
       _id: data._id,
       conversationId: data.conversationId,
       receiverId: data.receiverId,
-      receiverUsername: data.receiverUsername,
-      senderUsername: data.senderUsername,
+      receiverName: data.receiverName,
+      senderName: data.senderName,
       senderId: data.senderId,
       body: data.body,
-      isRead: data.isRead,
       createdAt: data.createdAt
     });
   }
@@ -42,8 +49,8 @@ class ChatService {
           _id: "$result._id",
           conversationId: "$result.conversationId",
           receiverId: "$result.receiverId",
-          receiverUsername: "$result.receiverUsername",
-          senderUsername: "$result.senderUsername",
+          receiverName: "$result.receiverName",
+          senderName: "$result.senderName",
           senderId: "$result.senderId",
           body: "$result.body",
           isRead: "$result.isRead",
@@ -82,6 +89,12 @@ class ChatService {
       ]
     };
     await MessageModel.updateMany(query, { $set: { isRead: true } }).exec();
+  }
+
+  public async deleteChatMessagesAndUser(conversationId: string, userId: string): Promise<void> {
+    await MessageModel.deleteMany({ conversationId }).exec();
+    await ConversationModel.deleteOne({ _id: conversationId }).exec();
+    await UserModel.deleteOne({ _id: userId }).exec();
   }
 }
 

@@ -1,5 +1,5 @@
 export interface IContactTemplate {
-  username: string;
+  senderName: string;
   email: string;
   message: string;
 }

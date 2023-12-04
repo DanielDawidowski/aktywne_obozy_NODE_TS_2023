@@ -1,7 +1,7 @@
 import Joi, { ObjectSchema } from "joi";
 
 const emailSchema: ObjectSchema = Joi.object().keys({
-  username: Joi.string().required().messages({
+  senderName: Joi.string().required().messages({
     "string.base": "Musi zawierać tylko litery",
     "string.empty": "To pole jest wymagany"
   }),

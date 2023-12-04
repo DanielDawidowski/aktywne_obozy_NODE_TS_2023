@@ -8,10 +8,10 @@ Accept: application/json
 withCredentials: true
 
 {
-  "conversationId": "",
-  "receiverId": "64187c79b173a91849641026",
-  "receiverUsername": "Dupa",
-  "body": "this is new message",
+  "conversationId": "6538afae85c60bfd9941b2fa",
+  "receiverId": "6538afab85c60bfd9941b2f0",
+  "receiverName":"Daniel",
+  "body": "siemkaa dupa",
   "isRead": false
 }
 
@@ -22,7 +22,14 @@ Accept: application/json
 withCredentials: true
 
 ###
-GET {{baseUrl}}/{{urlPath}}/chat/message/user/64187c79b173a91849641026
+GET {{baseUrl}}/{{urlPath}}/chat/message/user/65378617266082a84cfdb5d3
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+DELETE {{baseUrl}}/{{urlPath}}/chat/message/656778497ba8d0fd7b53745d/656778467ba8d0fd7b537454
+# For this endpoint, the type is either deleteForMe or deleteForEveryone
 Content-Type: application/json
 Accept: application/json
 withCredentials: true

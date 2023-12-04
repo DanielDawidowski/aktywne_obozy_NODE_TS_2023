@@ -22,7 +22,7 @@ const eventSchema: Schema = new Schema({
   image: { type: String, default: "" },
   imgVersion: { type: String, default: "" },
   imgId: { type: String, default: "" },
-  status: { type: String, default: "" },
+  status: { type: String, default: "active" },
   energyland: { type: Boolean, default: false }
 });
 

@@ -8,7 +8,7 @@ Accept: application/json
 withCredentials: true
 
 {
-  "username": "gucio hujek",
+  "senderName": "gucio hujek",
   "email": "dvds@wp.pl",
   "message": "siema mordo"
 }

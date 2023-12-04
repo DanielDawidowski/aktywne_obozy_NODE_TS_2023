@@ -8,9 +8,10 @@ Accept: application/json
 withCredentials: true
 
   {
-    "username": "dawid",
+    "username": "marcin",
     "password": "qwerty",
-    "email": "dvds1987@gmail.com"
+    "email": "marcin@gmail.com",
+    "role": "admin"
   }
 
 

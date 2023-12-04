@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import { UserModel } from "@user/models/user.model";
 // import { Helpers } from "@global/helpers/helpers";
 import { IUserDocument } from "@user/interfaces/user.interface";
+import { AuthModel } from "@auth/models/auth.model";
 
 class UserService {
   public async addUserData(data: IUserDocument): Promise<void> {
@@ -19,7 +20,9 @@ class UserService {
   // }
 
   public async getUserById(id: string): Promise<IUserDocument> {
-    const user: IUserDocument = (await UserModel.findOne({ authId: id })) as IUserDocument;
+    const user: IUserDocument = (await UserModel.findOne({
+      authId: id
+    })) as IUserDocument;
     return user;
   }
 
@@ -29,17 +32,36 @@ class UserService {
       { $skip: skip },
       { $limit: limit },
       { $sort: { createdAt: -1 } },
-      { $lookup: { from: "Auth", localField: "authId", foreignField: "_id", as: "authId" } },
+      {
+        $lookup: {
+          from: "Auth",
+          localField: "authId",
+          foreignField: "_id",
+          as: "authId"
+        }
+      },
       { $unwind: "$authId" },
       { $project: this.aggregateProject() }
     ]);
     return users;
   }
 
+  public async getAllAdminUsers(): Promise<IUserDocument[]> {
+    const admin: IUserDocument[] = await UserModel.find({ role: "admin" });
+    return admin;
+  }
+
   public async getUserByAuthId(authId: string): Promise<IUserDocument> {
     const users: IUserDocument[] = await UserModel.aggregate([
       { $match: { authId: new mongoose.Types.ObjectId(authId) } },
-      { $lookup: { from: "Auth", localField: "authId", foreignField: "_id", as: "authId" } },
+      {
+        $lookup: {
+          from: "Auth",
+          localField: "authId",
+          foreignField: "_id",
+          as: "authId"
+        }
+      },
       { $unwind: "$authId" },
       { $project: this.aggregateProject() }
     ]);
@@ -47,7 +69,9 @@ class UserService {
   }
 
   public async deleteUser(value: string): Promise<IUserDocument> {
-    const deleteUser: IUserDocument = (await UserModel.deleteOne({ _id: value })) as unknown as IUserDocument;
+    const deleteUser: IUserDocument = (await UserModel.deleteOne({
+      _id: value
+    })) as unknown as IUserDocument;
     return deleteUser;
   }
 

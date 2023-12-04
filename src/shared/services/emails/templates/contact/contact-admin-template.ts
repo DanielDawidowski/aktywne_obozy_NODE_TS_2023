@@ -4,10 +4,10 @@ import { IContactTemplate } from "@root/features/email/interface/email.interface
 
 class ContactAdminTemplate {
   public sendMessageToAdmin(templateParams: IContactTemplate): string {
-    const { username, email, message } = templateParams;
+    const { senderName, email, message } = templateParams;
 
     return ejs.render(fs.readFileSync(__dirname + "/contact-admin-template.ejs", "utf8"), {
-      username,
+      senderName,
       email,
       message,
       image_url: "https://i.ibb.co/S617hrN/Logo.jpg"

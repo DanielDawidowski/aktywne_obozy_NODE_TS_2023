@@ -1,6 +1,7 @@
 import express, { Router } from "express";
 import { Delete } from "@user/controllers/delete-user";
 import { Get } from "@user/controllers/get-profile";
+import { authMiddleware } from "@global/helpers/auth-middleware";
 
 class UserRoutes {
   private router: Router;
@@ -12,7 +13,8 @@ class UserRoutes {
   public routes(): Router {
     this.router.delete("/user/:userId", Delete.prototype.user);
     this.router.get("/user/profile/:userId", Get.prototype.profileByUserId);
-    this.router.get("/user/all/:page", Get.prototype.users);
+    this.router.get("/user/all/:page", authMiddleware.verifyUser, Get.prototype.users);
+    this.router.get("/admins", Get.prototype.admins);
     return this.router;
   }
 }

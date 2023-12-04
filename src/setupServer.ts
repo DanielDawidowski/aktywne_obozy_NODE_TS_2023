@@ -47,7 +47,7 @@ export class AOServer {
     app.use(helmet());
     app.use(
       cors({
-        origin: config.CLIENT_URL,
+        origin: config.CLIENT_URL!,
         credentials: true,
         optionsSuccessStatus: 200,
         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]

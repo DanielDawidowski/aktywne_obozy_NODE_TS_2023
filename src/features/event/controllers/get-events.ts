@@ -10,7 +10,7 @@ export class Get {
     const { page } = req.params;
     const skip: number = (parseInt(page) - 1) * PAGE_SIZE;
     const limit: number = PAGE_SIZE * parseInt(page);
-    const events = await eventService.getEvents({}, skip, limit, { createdAt: -1 });
+    const events = await eventService.getEvents({ imgId: "$ne" }, skip, limit, { createdAt: -1 });
     res.status(HTTP_STATUS.OK).json({ message: "All events", events });
   }
 
@@ -18,13 +18,5 @@ export class Get {
     const { eventId } = req.params;
     const event: IEventDocument = await eventService.getEventById(eventId);
     res.status(HTTP_STATUS.OK).json({ message: "Event", event });
-  }
-
-  public async eventsWithImage(req: Request, res: Response): Promise<void> {
-    const { page } = req.params;
-    const skip: number = (parseInt(page) - 1) * PAGE_SIZE;
-    const limit: number = PAGE_SIZE * parseInt(page);
-    const events = await eventService.getEvents({ imgId: "$ne" }, skip, limit, { createdAt: -1 });
-    res.status(HTTP_STATUS.OK).json({ message: "All events with images", events });
   }
 }

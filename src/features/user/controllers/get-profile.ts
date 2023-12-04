@@ -21,7 +21,12 @@ export class Get {
     const { page } = req.params;
     const skip: number = (parseInt(page) - 1) * PAGE_SIZE;
     const limit: number = PAGE_SIZE * parseInt(page);
-    await userService.getAllUsers(`${req.currentUser!.userId}`, skip, limit);
-    res.status(HTTP_STATUS.OK).json({ message: "All Users" });
+    const users = await userService.getAllUsers(`${req.currentUser!.userId}`, skip, limit);
+    res.status(HTTP_STATUS.OK).json({ message: "All Users", users });
+  }
+
+  public async admins(req: Request, res: Response): Promise<void> {
+    const admin: IUserDocument[] = await userService.getAllAdminUsers();
+    res.status(HTTP_STATUS.OK).json({ message: "All admins", admin });
   }
 }
