@@ -8,6 +8,7 @@ import { IMessageData } from "@chat/interfaces/chat.interface";
 import { socketIOChatObject } from "@root/shared/sockets/chat";
 import Logger from "bunyan";
 import { config } from "@root/config";
+import { ISettingChatData } from "@chat/interfaces/settings.interface";
 
 const log: Logger = config.createLogger("chat");
 
@@ -43,6 +44,23 @@ export class Add {
     await chatService.addMessageToDB(messageData);
 
     res.status(HTTP_STATUS.OK).json({ message: "Message added", conversationId: conversationObjectId });
+  }
+
+  public async timeSettings(req: Request, res: Response): Promise<void> {
+    const { startTime, endTime, startDay, endDay } = req.body;
+    const settingObjectId: ObjectId = new ObjectId();
+
+    const settingsData: ISettingChatData = {
+      _id: `${settingObjectId}`,
+      startTime,
+      endTime,
+      startDay,
+      endDay
+    };
+
+    res.status(HTTP_STATUS.OK).json({ message: "Setting time added" });
+
+    await chatService.addSettingsChatToDB(settingsData);
   }
 
   private emitSocketIOEvent(data: IMessageData): void {

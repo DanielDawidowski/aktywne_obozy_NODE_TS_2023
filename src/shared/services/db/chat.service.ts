@@ -1,13 +1,15 @@
+import { ObjectId } from "mongodb";
+import { UpdateQuery } from "mongoose";
 import { IMessageData } from "@chat/interfaces/chat.interface";
 import { IConversationDocument } from "@chat/interfaces/conversation.interface";
 import { ConversationModel } from "@chat/models/conversation.schema";
 import { MessageModel } from "@chat/models/chat.schema";
-import { ObjectId } from "mongodb";
-
 import { config } from "@root/config";
 import Logger from "bunyan";
-import { IUserDocument } from "@user/interfaces/user.interface";
 import { UserModel } from "@user/models/user.model";
+import { ISettingChatData, ISettingsChatDocument } from "@chat/interfaces/settings.interface";
+import { SettingsChatModel } from "@chat/models/settings.interface";
+
 const log: Logger = config.createLogger("chat");
 
 class ChatService {
@@ -33,6 +35,20 @@ class ChatService {
       body: data.body,
       createdAt: data.createdAt
     });
+  }
+
+  public async addSettingsChatToDB(data: ISettingChatData): Promise<void> {
+    await SettingsChatModel.create(data);
+  }
+
+  public async getSettings(): Promise<ISettingChatData[]> {
+    const settings = await SettingsChatModel.find({});
+    return settings as ISettingChatData[];
+  }
+
+  public async editSettingsChatToDB(settingsId: string, updatedSettings: ISettingChatData): Promise<void> {
+    const updateSettings: UpdateQuery<ISettingsChatDocument> = SettingsChatModel.updateOne({ _id: settingsId }, { $set: updatedSettings });
+    await Promise.all([updateSettings]);
   }
 
   public async getUserConversationList(userId: ObjectId): Promise<IMessageData[]> {

@@ -16,6 +16,40 @@ withCredentials: true
 }
 
 ###
+POST {{baseUrl}}/{{urlPath}}/chat/settings
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "startTime": "14:00",
+  "endTime": "20:00",
+  "startDay": "Monday",
+  "endDay": "Friday"
+}
+
+###
+PUT {{baseUrl}}/{{urlPath}}/chat/settings/6576dcd6d2f3a0e48ead584c
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "startTime": "6:00",
+  "endTime": "20:00",
+  "startDay": "Thuesday",
+  "endDay": "Friday"
+}
+
+
+###
+GET {{baseUrl}}/{{urlPath}}/chat/settings/list
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+
+###
 GET {{baseUrl}}/{{urlPath}}/chat/message/conversation-list
 Content-Type: application/json
 Accept: application/json

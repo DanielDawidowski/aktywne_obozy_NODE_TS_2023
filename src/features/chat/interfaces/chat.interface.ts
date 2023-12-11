@@ -41,35 +41,9 @@ export interface IChatList {
   conversationId: string;
 }
 
-export interface ITyping {
-  sender: string;
-  receiver: string;
-}
-
-export interface IChatJobData {
-  senderId?: mongoose.Types.ObjectId | string;
-  receiverId?: mongoose.Types.ObjectId | string;
-  messageId?: mongoose.Types.ObjectId | string;
-  senderName?: string;
-  reaction?: string;
-  type?: string;
-}
-
 export interface ISenderReceiver {
   senderId: string;
   receiverId: string;
   senderName: string;
   receiverName: string;
-}
-
-export interface IGetMessageFromCache {
-  index: number;
-  message: string;
-  receiver: IChatList;
-}
-
-export interface IChatUser {
-  _id: string;
-  username: string;
-  email: string;
 }
