@@ -22,7 +22,7 @@ Accept: application/json
 withCredentials: true
 
 {
-  "startTime": "14:00",
+  "startTime": "10:00",
   "endTime": "20:00",
   "startDay": "Monday",
   "endDay": "Friday"
