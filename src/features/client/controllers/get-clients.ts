@@ -3,7 +3,7 @@ import HTTP_STATUS from "http-status-codes";
 import { IClientDocument } from "@client/interfaces/client.interface";
 import { clientService } from "@service/db/client.service";
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 40;
 
 export class Get {
   public async clients(req: Request, res: Response): Promise<void> {
