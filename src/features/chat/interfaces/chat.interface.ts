@@ -23,14 +23,6 @@ export interface IMessageData {
   createdAt: Date | string;
 }
 
-export interface IMessageNotification {
-  currentUser: AuthPayload;
-  message: string;
-  receiverName: string;
-  receiverId: string;
-  messageData: IMessageData;
-}
-
 export interface IChatUsers {
   userOne: string;
   userTwo: string;

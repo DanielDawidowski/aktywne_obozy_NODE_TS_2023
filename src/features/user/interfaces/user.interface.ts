@@ -8,7 +8,6 @@ export interface IUserDocument extends Document {
   username?: string;
   email?: string;
   password?: string;
-  notifications: INotificationSettings;
   role?: string;
   createdAt?: Date;
 }
@@ -22,7 +21,6 @@ export interface IUser {
   password?: string;
   role: string;
   createdAt: Date;
-  notifications: INotificationSettings;
 }
 
 export interface IResetPasswordParams {
@@ -30,10 +28,6 @@ export interface IResetPasswordParams {
   email: string;
   ipaddress: string;
   date: string;
-}
-
-export interface INotificationSettings {
-  messages: boolean;
 }
 
 export interface ISearchUser {
@@ -55,7 +49,7 @@ export interface IUserJob {
   keyOne?: string;
   keyTwo?: string;
   key?: string;
-  value?: string | INotificationSettings | IUserDocument;
+  value?: string | IUserDocument;
 }
 
 export interface IEmailJob {

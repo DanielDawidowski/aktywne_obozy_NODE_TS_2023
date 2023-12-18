@@ -31,16 +31,6 @@ export class Add {
 
     Add.prototype.emitSocketIOEvent(messageData);
 
-    // if (!isRead) {
-    //   Add.prototype.messageNotification({
-    //     currentUser: req.currentUser!,
-    //     message: body,
-    //     receiverName: receiverName,
-    //     receiverId,
-    //     messageData
-    //   });
-    // }
-
     await chatService.addMessageToDB(messageData);
 
     res.status(HTTP_STATUS.OK).json({ message: "Message added", conversationId: conversationObjectId });

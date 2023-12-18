@@ -82,10 +82,7 @@ export class SignUp {
       uId,
       username: Helpers.firstLetterUppercase(username),
       email,
-      role,
-      notifications: {
-        messages: false
-      }
+      role
     } as unknown as IUserDocument;
   }
 }

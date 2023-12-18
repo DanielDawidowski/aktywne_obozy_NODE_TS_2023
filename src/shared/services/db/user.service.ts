@@ -82,8 +82,7 @@ class UserService {
       uId: "$authId.uId",
       email: "$authId.email",
       role: "$authId.role",
-      createdAt: "$authId.createdAt",
-      notifications: 1
+      createdAt: "$authId.createdAt"
     };
   }
 }

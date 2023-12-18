@@ -19,10 +19,7 @@
     "allowSyntheticDefaultImports": true,
     "pretty": true,
     "resolveJsonModule": true,
-    "plugins": [
-      { "transform": "typescript-transform-paths" },
-      { "transform": "typescript-transform-paths", "afterDeclarations": true }
-    ],
+    "plugins": [{ "transform": "typescript-transform-paths" }, { "transform": "typescript-transform-paths", "afterDeclarations": true }],
     "paths": {
       "@auth/*": ["src/features/auth/*"],
       "@user/*": ["src/features/user/*"],
@@ -30,7 +27,6 @@
       "@event/*": ["src/features/event/*"],
       "@client/*": ["src/features/client/*"],
       "@email/*": ["src/features/email/*"],
-      "@notification/*": ["src/features/notifications/*"],
       "@image/*": ["src/features/image/*"],
       "@global/*": ["src/shared/globals/*"],
       "@service/*": ["src/shared/services/*"],
