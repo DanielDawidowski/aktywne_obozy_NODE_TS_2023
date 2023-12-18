@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import HTTP_STATUS from "http-status-codes";
 import { joiValidation } from "@global/decorators/joi-validation.decorators";
-import { contactAdminTemplate } from "@service/emails/templates/contact/contact-admin-template";
+// import { contactAdminTemplate } from "@service/emails/templates/contact/contact-admin-template";
 import { emailSchema } from "@email/schemes/email.schema";
 import { IContactTemplate } from "@email/interface/email.interface";
 import { config } from "@root/config";
@@ -17,9 +17,9 @@ export class Create {
       message
     } as IContactTemplate;
 
-    const template: string = contactAdminTemplate.sendMessageToAdmin(templateParams);
+    // const template: string = contactAdminTemplate.sendMessageToAdmin(templateParams);
     const subject = `Nowa wiadomość od ${senderName}`;
-    await mailTransport.sendEmail(config.SENDER_EMAIL!, subject, template);
+    await mailTransport.sendEmail(config.SENDER_EMAIL!, subject, templateParams);
 
     res.status(HTTP_STATUS.OK).json({ message: "Wiadomość wysłana" });
   }

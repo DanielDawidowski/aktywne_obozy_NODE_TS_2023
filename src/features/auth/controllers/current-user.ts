@@ -12,9 +12,7 @@ export class CurrentUser {
     let isUser = false;
     let token = null;
     let user = null;
-    const existingUser: IUserDocument = (await userService.getUserById(
-      req.currentUser!.userId
-    )) as IUserDocument;
+    const existingUser: IUserDocument = (await userService.getUserById(req.currentUser!.userId)) as IUserDocument;
 
     if (existingUser) {
       isUser = true;

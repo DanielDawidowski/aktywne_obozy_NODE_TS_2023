@@ -20,9 +20,7 @@ class UserService {
   // }
 
   public async getUserById(id: string): Promise<IUserDocument> {
-    const user: IUserDocument = (await UserModel.findOne({
-      authId: id
-    })) as IUserDocument;
+    const user: IUserDocument = (await AuthModel.findById(id)) as IUserDocument;
     return user;
   }
 
