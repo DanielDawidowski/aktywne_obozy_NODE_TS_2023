@@ -22,8 +22,8 @@ Accept: application/json
 withCredentials: true
 
 {
-  "startTime": "10:00",
-  "endTime": "20:00",
+  "startTime": "00:00",
+  "endTime": "23:59",
   "startDay": "Monday",
   "endDay": "Friday"
 }

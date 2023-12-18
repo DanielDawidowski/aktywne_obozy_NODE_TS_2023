@@ -8,7 +8,7 @@ Accept: application/json
 withCredentials: true
 
 {
-  "name": "zadupieeee",
+  "name": "zakopane",
   "eventType": "gory",
   "price": 0,
   "discountPrice": 0,
@@ -17,7 +17,7 @@ withCredentials: true
   "address": {
     "hotel": "galicowka",
     "street": "Długa",
-    "web": "https://www.southparkstudios.com/episodes/xv5ktr/south-park-guitar-queer-o-season-11-ep-13"
+    "web": ""
   },
   "attractions": [
     "basen",

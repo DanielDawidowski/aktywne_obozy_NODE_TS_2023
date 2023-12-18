@@ -16,8 +16,8 @@ class EventRoutes {
     this.router.get("/event/all/:page", Get.prototype.events);
     this.router.get("/event/:eventId", Get.prototype.event);
     this.router.post("/event", authMiddleware.verifyUser, Create.prototype.event);
-    this.router.delete("/event/:eventId", authMiddleware.verifyUser, Delete.prototype.event);
-    this.router.put("/event/:eventId", authMiddleware.verifyUser, Update.prototype.event);
+    this.router.delete("/event/:eventId", Delete.prototype.event);
+    this.router.put("/event/:eventId", Update.prototype.event);
     return this.router;
   }
 }
