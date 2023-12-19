@@ -11,20 +11,8 @@ class EventService {
     await Promise.all([event, user]);
   }
 
-  public async getEvents(query: IGetEventQuery, skip = 0, limit = 0, sort: Record<string, 1 | -1>): Promise<IEventDocument[]> {
-    let eventQuery = {};
-    if (query?.imgId) {
-      eventQuery = { imgId: { $ne: "" } };
-    } else {
-      eventQuery = query;
-    }
-
-    const events: IEventDocument[] = await EventModel.aggregate([
-      { $match: eventQuery },
-      { $sort: sort },
-      { $skip: skip },
-      { $limit: limit }
-    ]);
+  public async getEvents(): Promise<IEventDocument[]> {
+    const events: IEventDocument[] = await EventModel.find({});
     return events;
   }
 

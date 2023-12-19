@@ -34,7 +34,7 @@ withCredentials: true
 }
 
 ###
-GET {{baseUrl}}/{{urlPath}}/event/all/1
+GET {{baseUrl}}/{{urlPath}}/events
 Content-Type: application/json
 Accept: application/json
 withCredentials: true

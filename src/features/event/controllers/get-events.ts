@@ -3,14 +3,9 @@ import HTTP_STATUS from "http-status-codes";
 import { IEventDocument } from "@event/interfaces/event.interface";
 import { eventService } from "@service/db/event.service";
 
-const PAGE_SIZE = 10;
-
 export class Get {
   public async events(req: Request, res: Response): Promise<void> {
-    const { page } = req.params;
-    const skip: number = (parseInt(page) - 1) * PAGE_SIZE;
-    const limit: number = PAGE_SIZE * parseInt(page);
-    const events = await eventService.getEvents({ imgId: "$ne" }, skip, limit, { createdAt: -1 });
+    const events = await eventService.getEvents();
     res.status(HTTP_STATUS.OK).json({ message: "All events", events });
   }
 

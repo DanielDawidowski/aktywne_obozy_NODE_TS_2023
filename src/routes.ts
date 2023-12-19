@@ -6,6 +6,7 @@ import { eventRoutes } from "@event/routes/event.route";
 import { emailRoutes } from "@email/routes/email.route";
 import { chatRoutes } from "@chat/routes/chatRoutes";
 import { userRoutes } from "@user/routes/user.routes";
+import { authMiddleware } from "@global/helpers/auth-middleware";
 
 const BASE_PATH = "/api/v1";
 
@@ -13,7 +14,7 @@ export default (app: Application) => {
   const routes = () => {
     app.use(BASE_PATH, authRoutes.routes());
     app.use(BASE_PATH, authRoutes.signoutRoute());
-    app.use(BASE_PATH, currentUserRoutes.routes());
+    app.use(BASE_PATH, authMiddleware.verifyUser, currentUserRoutes.routes());
     app.use(BASE_PATH, eventRoutes.routes());
     app.use(BASE_PATH, clientRoutes.routes());
     app.use(BASE_PATH, emailRoutes.routes());

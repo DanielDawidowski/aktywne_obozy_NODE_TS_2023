@@ -13,7 +13,7 @@ class EventRoutes {
   }
 
   public routes(): Router {
-    this.router.get("/event/all/:page", Get.prototype.events);
+    this.router.get("/events", Get.prototype.events);
     this.router.get("/event/:eventId", Get.prototype.event);
     this.router.post("/event", authMiddleware.verifyUser, Create.prototype.event);
     this.router.delete("/event/:eventId", Delete.prototype.event);
