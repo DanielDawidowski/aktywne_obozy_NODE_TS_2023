@@ -16,10 +16,10 @@ class ChatRoutes {
     this.router.post("/chat/message", authMiddleware.verifyUser, Add.prototype.message);
     this.router.post("/chat/settings", Add.prototype.timeSettings);
     this.router.get("/chat/message/conversation-list", authMiddleware.verifyUser, Get.prototype.conversationList);
-    this.router.get("/chat/message/user/:receiverId", Get.prototype.messages);
+    this.router.get("/chat/message/user/:receiverId", authMiddleware.verifyUser, Get.prototype.messages);
     this.router.get("/chat/settings/list", Get.prototype.settings);
-    this.router.put("/chat/settings/:settingsId", Edit.prototype.timeSettings);
-    this.router.delete("/chat/message/:conversationId/:userId", Delete.prototype.messages);
+    this.router.put("/chat/settings/:settingsId", authMiddleware.verifyUser, Edit.prototype.timeSettings);
+    this.router.delete("/chat/message/:conversationId/:userId", authMiddleware.verifyUser, Delete.prototype.messages);
     return this.router;
   }
 }

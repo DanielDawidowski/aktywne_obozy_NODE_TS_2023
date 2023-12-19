@@ -20,7 +20,7 @@ export class CurrentUser {
       user = existingUser;
     }
 
-    // console.log("existingUser", existingUser);
+    log.info("existingUser", existingUser);
     res.status(HTTP_STATUS.OK).json({ token, isUser, user });
   }
 }

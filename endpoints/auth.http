@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:5000
+@baseUrl = https://aktywne-obozy-backend-2023.onrender.com
 @urlPath = api/v1
 
 ###
