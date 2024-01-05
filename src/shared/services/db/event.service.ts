@@ -26,10 +26,9 @@ class EventService {
     return count;
   }
 
-  public async deleteEvent(eventId: string, userId: string): Promise<void> {
-    const deleteEvent: Query<IQueryComplete & IQueryDeleted, IEventDocument> = EventModel.deleteOne({ _id: eventId });
-    const decrementEventCount: UpdateQuery<IUserDocument> = UserModel.updateOne({ _id: userId }, { $inc: { eventsCount: -1 } });
-    await Promise.all([deleteEvent, decrementEventCount]);
+  public async deleteEvent(eventId: string): Promise<IEventDocument> {
+    const deleteEvent: IEventDocument = (await EventModel.deleteOne({ _id: eventId })) as unknown as IEventDocument;
+    return deleteEvent;
   }
 
   public async editEvent(eventId: string, updatedEvent: IEventDocument): Promise<void> {

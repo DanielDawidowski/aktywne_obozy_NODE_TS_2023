@@ -16,6 +16,7 @@ class ClientRoutes {
     this.router.get("/client/:clientId", Get.prototype.client);
     this.router.post("/client", Create.prototype.client);
     this.router.delete("/client/:clientId", Delete.prototype.client);
+    this.router.delete("/clients", Delete.prototype.clients);
     this.router.put("/client/:clientId", Update.prototype.client);
 
     return this.router;

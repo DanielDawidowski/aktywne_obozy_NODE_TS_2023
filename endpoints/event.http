@@ -74,7 +74,7 @@ withCredentials: true
 }
 
 ###
-GET {{baseUrl}}/{{urlPath}}/event/64946a2d1dde0a58dc15cb8a
+GET {{baseUrl}}/{{urlPath}}/event/658045afabea24ffcae6bc77
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
@@ -87,7 +87,7 @@ Accept: application/json
 withCredentials: true
 
 ###
-DELETE {{baseUrl}}/{{urlPath}}/event/64946a2d1dde0a58dc15cb8a
+DELETE {{baseUrl}}/{{urlPath}}/event/658045afabea24ffcae6bc77
 Content-Type: application/json
 Accept: application/json
 withCredentials: true

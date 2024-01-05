@@ -31,10 +31,23 @@ withCredentials: true
 
 
 ###
-DELETE {{baseUrl}}/{{urlPath}}/client/6495543ec38a2df6ec470f4c
+DELETE {{baseUrl}}/{{urlPath}}/client/659703e6abb93d6f926ce97f
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
+
+###
+DELETE {{baseUrl}}/{{urlPath}}/clients
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "clientIds" : [
+    "6597c2525ac4a77a7f71450e"
+  ]
+}
+
 
 ###
 PUT {{baseUrl}}/{{urlPath}}/client/6495543ec38a2df6ec470f4c

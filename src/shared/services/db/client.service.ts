@@ -33,6 +33,11 @@ class ClientService {
     return deleteClient;
   }
 
+  public async deleteClients(clientIds: string[]): Promise<IClientDocument[]> {
+    const deleteClients: IClientDocument[] = (await ClientModel.deleteMany({ _id: { $in: clientIds } })) as unknown as IClientDocument[];
+    return deleteClients;
+  }
+
   public async editClient(clientId: string, updatedClient: IClientDocument): Promise<void> {
     const updateClient: UpdateQuery<IClientDocument> = ClientModel.updateOne({ _id: clientId }, { $set: updatedClient });
     await Promise.all([updateClient]);

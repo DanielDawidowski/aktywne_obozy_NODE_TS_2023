@@ -7,4 +7,10 @@ export class Delete {
     await clientService.deleteClient(req.params.clientId);
     res.status(HTTP_STATUS.OK).json({ message: "Client deleted successfully" });
   }
+
+  public async clients(req: Request, res: Response): Promise<void> {
+    const { clientIds } = req.body;
+    await clientService.deleteClients(clientIds);
+    res.status(HTTP_STATUS.OK).json({ message: "Clients deleted successfully" });
+  }
 }

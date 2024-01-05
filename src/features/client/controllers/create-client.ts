@@ -7,8 +7,7 @@ import { clientSchema } from "@client/schemes/client.schema";
 import { IClientDocument } from "@client/interfaces/client.interface";
 // import { clientConfirmationTemplate } from "@service/emails/templates/client/client-confirmation-template";
 import { mailTransport } from "@service/emails/mail.transport";
-import { config } from "@root/config";
-import { IContactTemplate } from "@email/interface/email.interface";
+import { clientConfirmationTemplate } from "@service/emails/templates/client/client-confirmation-template";
 
 export class Create {
   @joiValidation(clientSchema)
@@ -30,15 +29,10 @@ export class Create {
 
     await clientService.addClientData(createdClient);
 
-    const emailData: IContactTemplate = {
-      senderName: name,
-      email: email,
-      message: "Dziękujemy za zgłoszenie"
-    };
-
-    // const template: string = clientConfirmationTemplate.sendConfirmationToClient(name, eventName);
+    const template: string = clientConfirmationTemplate.sendConfirmationToClient(name, eventName);
     const subject = `Potwierdzenie zgłoszenia na ${eventName}`;
-    await mailTransport.sendEmail(config.SENDER_EMAIL!, subject, emailData);
+    await mailTransport.sendEmail(email, subject, template);
+
     res.status(HTTP_STATUS.OK).json({ message: "Dziękujemy za zgłoszenie", client: createdClient });
   }
 }
