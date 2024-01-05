@@ -1,6 +1,6 @@
-import { Query, UpdateQuery } from "mongoose";
+import { UpdateQuery } from "mongoose";
 import { UserModel } from "@user/models/user.model";
-import { IEventDocument, IGetEventQuery, IQueryComplete, IQueryDeleted } from "@event/interfaces/event.interface";
+import { IEventDocument } from "@event/interfaces/event.interface";
 import { EventModel } from "@event/models/event.model";
 import { IUserDocument } from "@user/interfaces/user.interface";
 

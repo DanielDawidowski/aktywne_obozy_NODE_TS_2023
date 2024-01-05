@@ -4,13 +4,11 @@ import { IMessageData } from "@chat/interfaces/chat.interface";
 import { IConversationDocument } from "@chat/interfaces/conversation.interface";
 import { ConversationModel } from "@chat/models/conversation.schema";
 import { MessageModel } from "@chat/models/chat.schema";
-import { config } from "@root/config";
-import Logger from "bunyan";
 import { UserModel } from "@user/models/user.model";
 import { ISettingChatData, ISettingsChatDocument } from "@chat/interfaces/settings.interface";
 import { SettingsChatModel } from "@chat/models/settings.interface";
-
-const log: Logger = config.createLogger("chat");
+import { AuthModel } from "@auth/models/auth.model";
+import { IUserDocument } from "@user/interfaces/user.interface";
 
 class ChatService {
   public async addMessageToDB(data: IMessageData): Promise<void> {
@@ -108,9 +106,13 @@ class ChatService {
   }
 
   public async deleteChatMessagesAndUser(conversationId: string, userId: string): Promise<void> {
-    await MessageModel.deleteMany({ conversationId }).exec();
-    await ConversationModel.deleteOne({ _id: conversationId }).exec();
-    await UserModel.deleteOne({ _id: userId }).exec();
+    const user: IUserDocument = (await UserModel.findById(userId)) as IUserDocument;
+    await Promise.all([
+      MessageModel.deleteMany({ conversationId }),
+      ConversationModel.deleteOne({ _id: conversationId }),
+      UserModel.deleteOne({ _id: userId }),
+      AuthModel.deleteOne({ _id: user.authId as string })
+    ]);
   }
 }
 

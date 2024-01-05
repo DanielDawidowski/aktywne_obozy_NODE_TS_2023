@@ -6,11 +6,7 @@ import { chatService } from "@service/db/chat.service";
 // import { IMessageData } from "@chat/interfaces/chat.interface";
 import { IMessageData } from "@chat/interfaces/chat.interface";
 import { socketIOChatObject } from "@root/shared/sockets/chat";
-import Logger from "bunyan";
-import { config } from "@root/config";
 import { ISettingChatData } from "@chat/interfaces/settings.interface";
-
-const log: Logger = config.createLogger("chat");
 
 export class Add {
   public async message(req: Request, res: Response): Promise<void> {
