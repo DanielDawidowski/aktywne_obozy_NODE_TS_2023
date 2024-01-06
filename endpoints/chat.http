@@ -29,7 +29,7 @@ withCredentials: true
 }
 
 ###
-PUT {{baseUrl}}/{{urlPath}}/chat/settings/6576dcd6d2f3a0e48ead584c
+PUT {{baseUrl}}/{{urlPath}}/chat/settings/65803e3babea24ffcae6bc6c
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
@@ -37,8 +37,8 @@ withCredentials: true
 {
   "startTime": "6:00",
   "endTime": "20:00",
-  "startDay": "Thuesday",
-  "endDay": "Friday"
+  "startDay": "Friday",
+  "endDay": "Sunday"
 }
 
 

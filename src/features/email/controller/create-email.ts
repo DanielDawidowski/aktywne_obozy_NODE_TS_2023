@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import HTTP_STATUS from "http-status-codes";
 import { joiValidation } from "@global/decorators/joi-validation.decorators";
-import { contactAdminTemplate } from "@service/emails/templates/contact/contact-admin-template";
+import { contactAdminTemplate } from "@service/emails/templates/contact/contact-template";
 import { emailSchema } from "@email/schemes/email.schema";
 import { IContactTemplate } from "@email/interface/email.interface";
 import { config } from "@root/config";

@@ -1,5 +1,8 @@
-class ClientConfirmationTemplate {
-  public sendConfirmationToClient(clientName: string, eventName: string): string {
+import { IClientDocument } from "@client/interfaces/client.interface";
+
+class AdminConfirmationTemplate {
+  public send(client: IClientDocument): string {
+    const { name, eventName, email, tel, price } = client;
     const imageUrl = "https://i.ibb.co/S617hrN/Logo.jpg";
 
     return `
@@ -98,7 +101,7 @@ class ClientConfirmationTemplate {
                                                       "
                                                       align="left"
                                                     >
-                                                      Potwierdzenie zgłoszenia na ${eventName}
+                                                      Nowe zgłoszenie na ${eventName},
                                                     </div>
                                                   </td>
                                                 </tr>
@@ -110,39 +113,73 @@ class ClientConfirmationTemplate {
                                                   ></td>
                                                 </tr>
                                                 <tr>
-                                                  <td style="padding-bottom: 10px">
-                                                    <div
-                                                      style="
-                                                        color: #333333;
-                                                        font-family: 'Open Sans', sans-serif;
-                                                        font-size: 16px;
-                                                        line-height: 26px;
-                                                        font-weight: bold;
-                                                      "
-                                                      class="m_8415581259083956697text"
-                                                      align="left"
-                                                    >
-                                                      Drogi ${clientName},
-                                                    </div>
-                                                  </td>
+                                                <td style="padding-top: 22px">
+                                                  <div
+                                                    class="m_8415581259083956697text"
+                                                    style="
+                                                      color: #333333;
+                                                      font-family: 'Open Sans', sans-serif;
+                                                      font-size: 16px;
+                                                      line-height: 33px;
+                                                      font-weight: 600;
+                                                    "
+                                                    align="left"
+                                                  >
+                                                    imię: ${name}
+                                                  </div>
+                                                </td>
+                                                <tr>
+                                                <td style="padding-top: 22px">
+                                                  <div
+                                                    class="m_8415581259083956697text"
+                                                    style="
+                                                      color: #333333;
+                                                      font-family: 'Open Sans', sans-serif;
+                                                      font-size: 16px;
+                                                      line-height: 33px;
+                                                      font-weight: 600;
+                                                    "
+                                                    align="left"
+                                                  >
+                                                    email: ${email}
+                                                  </div>
+                                                </td>
                                                 </tr>
                                                 <tr>
-                                                  <td style="padding-bottom: 36px">
-                                                    <div
-                                                      class="m_8415581259083956697text"
-                                                      style="
-                                                        color: #333333;
-                                                        font-family: 'Open Sans', sans-serif;
-                                                        font-size: 16px;
-                                                        line-height: 26px;
-                                                      "
-                                                      align="left"
-                                                    >
-                                                      Dziękujemy za zgłoszenie, wkrótce skontaktujemy się z Tobą.
-                                                    </div>
-                                                  </td>
+                                                <td style="padding-top: 22px">
+                                                  <div
+                                                    class="m_8415581259083956697text"
+                                                    style="
+                                                      color: #333333;
+                                                      font-family: 'Open Sans', sans-serif;
+                                                      font-size: 16px;
+                                                      line-height: 33px;
+                                                      font-weight: 600;
+                                                    "
+                                                    align="left"
+                                                  >
+                                                    telefon: ${tel}
+                                                  </div>
+                                                </td>
                                                 </tr>
-
+                                                <tr>
+                                                <td style="padding-top: 22px">
+                                                  <div
+                                                    class="m_8415581259083956697text"
+                                                    style="
+                                                      color: #333333;
+                                                      font-family: 'Open Sans', sans-serif;
+                                                      font-size: 16px;
+                                                      line-height: 33px;
+                                                      font-weight: 600;
+                                                    "
+                                                    align="left"
+                                                  >
+                                                    cena: ${price}
+                                                  </div>
+                                                </td>
+                                                </tr>
+                                              </tr>
                                                 <tr>
                                                   <td style="padding-top: 22px">
                                                     <div
@@ -194,4 +231,4 @@ class ClientConfirmationTemplate {
   }
 }
 
-export const clientConfirmationTemplate: ClientConfirmationTemplate = new ClientConfirmationTemplate();
+export const adminConfirmationTemplate: AdminConfirmationTemplate = new AdminConfirmationTemplate();

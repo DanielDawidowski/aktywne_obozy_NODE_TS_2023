@@ -111,7 +111,7 @@ class ChatService {
       MessageModel.deleteMany({ conversationId }),
       ConversationModel.deleteOne({ _id: conversationId }),
       UserModel.deleteOne({ _id: userId }),
-      AuthModel.deleteOne({ _id: user.authId as string })
+      AuthModel.deleteOne({ _id: user?.authId as string })
     ]);
   }
 }

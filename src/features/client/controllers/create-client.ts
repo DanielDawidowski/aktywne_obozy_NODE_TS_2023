@@ -8,6 +8,8 @@ import { IClientDocument } from "@client/interfaces/client.interface";
 // import { clientConfirmationTemplate } from "@service/emails/templates/client/client-confirmation-template";
 import { mailTransport } from "@service/emails/mail.transport";
 import { clientConfirmationTemplate } from "@service/emails/templates/client/client-confirmation-template";
+import { config } from "@root/config";
+import { adminConfirmationTemplate } from "@service/emails/templates/admin/send-admin";
 
 export class Create {
   @joiValidation(clientSchema)
@@ -29,9 +31,14 @@ export class Create {
 
     await clientService.addClientData(createdClient);
 
-    const template: string = clientConfirmationTemplate.sendConfirmationToClient(name, eventName);
-    const subject = `Potwierdzenie zgłoszenia na ${eventName}`;
-    await mailTransport.sendEmail(email, subject, template);
+    const clientTemplate: string = clientConfirmationTemplate.sendConfirmationToClient(name, eventName);
+    const adminTemplate: string = adminConfirmationTemplate.send(createdClient);
+
+    const clientSubject = `Potwierdzenie zgłoszenia na ${eventName}`;
+    const adminSubject = `Nowe zgłoszenie od ${name}`;
+
+    await mailTransport.sendEmail(email, clientSubject, clientTemplate);
+    await mailTransport.sendEmail(config.SENDER_EMAIL!, adminSubject, adminTemplate);
 
     res.status(HTTP_STATUS.OK).json({ message: "Dziękujemy za zgłoszenie", client: createdClient });
   }

@@ -1,9 +1,12 @@
-class ClientConfirmationTemplate {
-  public sendConfirmationToClient(clientName: string, eventName: string): string {
+import { IContactTemplate } from "@root/features/email/interface/email.interface";
+
+class ContactAdminTemplate {
+  public sendMessageToAdmin(templateParams: IContactTemplate): string {
+    const { senderName, email, message } = templateParams;
     const imageUrl = "https://i.ibb.co/S617hrN/Logo.jpg";
 
     return `
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f7f7f7">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f7f7f7">
       <tbody>
         <tr>
           <td align="center" valign="top">
@@ -85,29 +88,21 @@ class ClientConfirmationTemplate {
                                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                               <tbody>
                                                 <tr>
-                                                  <td>
+                                                  <td style="padding-bottom: 10px">
                                                     <div
-                                                      class="m_8415581259083956697h1-mobile-medium"
                                                       style="
-                                                        color: #50b5ff;
+                                                        color: #333333;
                                                         font-family: 'Open Sans', sans-serif;
-                                                        font-size: 24px;
-                                                        line-height: 30px;
-                                                        letter-spacing: 0;
-                                                        font-weight: 600;
+                                                        font-size: 16px;
+                                                        line-height: 26px;
+                                                        font-weight: bold;
                                                       "
+                                                      class="m_8415581259083956697text"
                                                       align="left"
                                                     >
-                                                      Potwierdzenie zgłoszenia na ${eventName}
+                                                       ${senderName}  wysłał do Ciebie wiadomość,
                                                     </div>
                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                  <td
-                                                    height="32"
-                                                    style="font-size: 0; line-height: 0; width: 100%; min-width: 100%"
-                                                    align="center"
-                                                  ></td>
                                                 </tr>
                                                 <tr>
                                                   <td style="padding-bottom: 10px">
@@ -121,52 +116,35 @@ class ClientConfirmationTemplate {
                                                       "
                                                       class="m_8415581259083956697text"
                                                       align="left"
-                                                    >
-                                                      Drogi ${clientName},
-                                                    </div>
-                                                  </td>
-                                                </tr>
-                                                <tr>
-                                                  <td style="padding-bottom: 36px">
-                                                    <div
-                                                      class="m_8415581259083956697text"
-                                                      style="
-                                                        color: #333333;
-                                                        font-family: 'Open Sans', sans-serif;
-                                                        font-size: 16px;
-                                                        line-height: 26px;
-                                                      "
-                                                      align="left"
-                                                    >
-                                                      Dziękujemy za zgłoszenie, wkrótce skontaktujemy się z Tobą.
-                                                    </div>
-                                                  </td>
-                                                </tr>
 
+                                                      email: ${email},
+                                                    </div>
+                                                  </td>
+                                                </tr>
                                                 <tr>
-                                                  <td style="padding-top: 22px">
+                                                  <td>
                                                     <div
-                                                      class="m_8415581259083956697text"
+                                                      class="m_8415581259083956697h1-mobile-medium"
                                                       style="
-                                                        color: #333333;
+                                                        color: #50b5ff;
                                                         font-family: 'Open Sans', sans-serif;
-                                                        font-size: 16px;
-                                                        line-height: 33px;
+                                                        font-size: 24px;
+                                                        line-height: 30px;
+                                                        letter-spacing: 0;
+                                                        font-weight: 600;
                                                       "
                                                       align="left"
                                                     >
-                                                      Dziękujemy<br />
-                                                      <img
-                                                        src=${imageUrl}
-                                                        border="0"
-                                                        width="75"
-                                                        height="110"
-                                                        alt=""
-                                                        class="CToWUd"
-                                                        style="object-fit: cover"
-                                                      />
+                                                      wiadomość: ${message}
                                                     </div>
                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                  <td
+                                                    height="32"
+                                                    style="font-size: 0; line-height: 0; width: 100%; min-width: 100%"
+                                                    align="center"
+                                                  ></td>
                                                 </tr>
                                               </tbody>
                                             </table>
@@ -190,8 +168,9 @@ class ClientConfirmationTemplate {
         </tr>
       </tbody>
     </table>
-    `;
+
+  `;
   }
 }
 
-export const clientConfirmationTemplate: ClientConfirmationTemplate = new ClientConfirmationTemplate();
+export const contactAdminTemplate: ContactAdminTemplate = new ContactAdminTemplate();
